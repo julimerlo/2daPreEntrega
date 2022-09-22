@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f580711539.js" crossorigin="anonymous"></script>
+
+    <title>Barberia Lorem Ipsum</title>
+</head>
+
+<body class="bg-dark text-light container">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark bg-dark sticky-top shadow mb-3 flex-column">
+        <div>
+            <img src="./logo.jpg" alt="logo barberia lorem" alt="" width="100vw" height=""
+                class="align-text-center"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse d-flex my-4" id="navbarNavAltMarkup">
+            <ul class="nav d-flex justify-content-between text-light">
+                <li class="nav-item ">
+                    <a class="nav-link text-light" aria-current="page" href="#">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-light" href="#">Turnos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Contacto</a>
+                </li>
+                <li class="nav-item ">
+                    <button class="nav-link " id="open" href="#">Reserva <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="contador-carrito">0</span> </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="my-5">
+        <h1 class="text-center">SOMOS BARBERIA LOREM IPSUM</h1>
+        <H4 class="text-center">ENCONTRANOS EN AV. LIBERTADOR 2022</H4>
+    </div>
+
+    <div class="modal-container" id="modal_container">
+        <div class="modal-carrito">
+            <h3 id="horarios">Reserva</h3>
+            <button id="cerrar">Cerrar</button>
+            <button id="cerrar">Reservar turno</button>
+            <div id="carrito-contenedor"></div>
+        </div>
+    </div>
+
+    <section class="d-flex my-5">
+        <div>
+            <h2 class="text-center">Sobre Nosotros</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, voluptas? Ab corrupti aliquam
+                corporis!
+                Voluptatibus optio odit molestiae reiciendis! Eos, optio veniam? Qui quod dolore doloribus, quam sequi
+                optio
+                nisi?
+                Dolores voluptatum facere deserunt nihil, distinctio dolor eaque a voluptates error non, consequuntur
+                atque
+                animi eos eveniet, aspernatur ea saepe enim laudantium voluptatem voluptas totam. Iste exercitationem
+                sequi
+                perferendis impedit.
+                Laborum adipisci officiis exercitationem a accusamus? Aperiam neque animi nihil cupiditate at eum
+                corrupti,
+                quisquam quasi itaque, voluptatibus fugit eligendi saepe ad accusantium sed tenetur reiciendis
+                <!-- <img src="./logo2.jpg" alt="nosotros" height="300px"> -->
+            </p>
+        </div>
+        <div>
+            <h3 class="text-center">Nuestro equipo</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A, illum? Tempora doloribus molestias quasi
+                labore?
+                Tenetur nostrum laboriosam cupiditate libero obcaecati illo optio maxime sunt deleniti veniam! Quos,
+                deserunt modi!
+                Ratione hic perspiciatis in debitis aut adipisci consequuntur repudiandae neque. Facilis repellat
+                voluptate
+                placeat quod, consectetur reprehenderit neque eveniet, architecto a dignissimos labore aliquid, ipsa
+                corporis voluptatum aperiam fugit corrupti.
+                Omnis consequatur, totam sit nihil reprehenderit, beatae impedit dolore necessitatibus maiores minima
+                natus
+                incidunt sed officia. Consequatur repellendus omnis pariatur tempora velit quibusdam assumenda, maxime
+                soluta distinctio optio nobis facere.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="text-center">Nuestros Servicios</h2>
+        <div id="servicios" class="cartas">
+        </div>
+        <h3 class="text-center">Nuestros horarios</h3>
+        <div id="listaHorarios" class="cartas">
+        </div>
+    </section>
+
+    <section class="text-center my-5">
+        <h2>Turnos</h2>
+        <form id="formulario">
+            <p>Por favor completa los siguientes campos</p>
+            <label for="nombre">Nombre y apellido</label>
+            <input type="text" id="nombre" placeholder="Tu nombre">
+            <label for="celular">Celular</label>
+            <input type="text" id="celular" placeholder="Tu celular">
+            <input type="submit" value="Enviar" />
+        </form>
+    </section>
+
+    <section class="text-center my-5">
+        <h2>Contacto</h2>
+    </section>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="./js/clientes.js"></script>
+    <script src="./js/servicios.js"></script>
+    <script src="./js/carritoIndex.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/apps.js"></script>
+</body>
+
+</html>
