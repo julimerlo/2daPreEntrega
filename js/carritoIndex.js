@@ -21,7 +21,13 @@ const carritoIndex = (productoId) => {
 
   const existe = carritoDeCompras.some((producto) => producto.id == productoId);
   if (existe) {
-    alert("El servicio ya se encuentra en el carrito");
+    Swal.fire({
+      position: "top-end",
+      icon: "warning",
+      title: "El servicio ya se encuentra en el carrito!",
+      showConfirmButton: false,
+      timer: 1800,
+    });
   } else {
     const renderProductosCarrito = () => {
       let producto = cortes.find((producto) => producto.id == productoId);
@@ -34,9 +40,10 @@ const carritoIndex = (productoId) => {
       contenedorCarrito2.appendChild(div);
 
       /* Para borrar en el carrito. No me funciona!!*/
-      const botonBorrar = document.getElementById(`eliminar(${producto.id})`);
+      let botonBorrar = document.getElementById(`eliminar(${producto.id})`);
       botonBorrar.addEventListener("click", () => {
         borrarServicio(producto.id);
+        console.log();
       });
 
       const guardarStorage2 = (clave, valor) => {
@@ -45,7 +52,14 @@ const carritoIndex = (productoId) => {
       guardarStorage2("listaServicios2", JSON.stringify(carritoDeCompras));
     };
 
-    alert("Se agrego el servicio al carrito!");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Servicio agregado al carrito!",
+      showConfirmButton: false,
+      timer: 1800,
+    });
+
     renderProductosCarrito();
   }
 };
@@ -58,6 +72,8 @@ const borrarServicio = (productoId) => {
   carritoDeCompras.splice(index, 1);
 };
 
+
+
 /* Hora */
 /* const botonHora = document.getElementById(`botonHora`);
 botonHora.addEventListener("click", () => {
@@ -69,3 +85,4 @@ botonHora.addEventListener("click", () => {
 
   horarios.appendChild(div);
 }); */
+

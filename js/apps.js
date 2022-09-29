@@ -17,9 +17,9 @@ const mostrarProductos = (productos) => {
 
     boton.addEventListener("click", () => {
       carritoIndex(item.id);
+      console.log(item.id);
     });
   });
 };
-
 
 mostrarProductos(cortes);
