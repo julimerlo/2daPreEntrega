@@ -43,7 +43,6 @@ const carritoIndex = (productoId) => {
       let botonBorrar = document.getElementById(`eliminar(${producto.id})`);
       botonBorrar.addEventListener("click", () => {
         borrarServicio(producto.id);
-        console.log();
       });
 
       const guardarStorage2 = (clave, valor) => {
@@ -72,8 +71,6 @@ const borrarServicio = (productoId) => {
   carritoDeCompras.splice(index, 1);
 };
 
-
-
 /* Hora */
 /* const botonHora = document.getElementById(`botonHora`);
 botonHora.addEventListener("click", () => {
@@ -85,4 +82,3 @@ botonHora.addEventListener("click", () => {
 
   horarios.appendChild(div);
 }); */
-
