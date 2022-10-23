@@ -1,20 +1,35 @@
 let carritoEnLs = JSON.parse(localStorage.getItem("listaServicios2"));
 let carritoDeCompras = [];
 
-console.log(carritoEnLs);
-
-if (carritoEnLs) {
-  carritoDeCompras = carritoEnLs;
-  carritoDeCompras.forEach((elemento) => {
+const renderServicios = () => {
+  if (carritoEnLs) {
+    carritoDeCompras = carritoEnLs;
+    let div = "";
+    let total = 0;
     const contenedorCarrito = document.getElementById("carrito-contenedor");
-    let div = document.createElement("div");
-    div.classList.add("productoEnCarrito");
-    div.innerHTML = ` <p>${elemento.nombre}</p>
-    <p>Precio: ${elemento.precio}</p> 
-    <button id="eliminar${elemento.id}" class="boton-eliminar" ><i class="fa-solid fa-trash-can"></i></button>`;
-    contenedorCarrito.appendChild(div);
-  });
-}
+    carritoDeCompras.forEach((elemento) => {
+      total += Number(elemento.precio);
+      div += `
+        <div class="productoEnCarrito">
+          <p>${elemento.nombre}</p>
+          <p>Precio: ${elemento.precio}</p>
+          <button onClick="borrarServicio(${elemento.id})" class="boton-eliminar" ><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+      `;
+    });
+    contenedorCarrito.innerHTML = div;
+
+    if (total > 0) {
+      document.getElementById("totalContainer").style.display = "block";
+      document.getElementById("totalCarrito").innerHTML = total;
+    } else {
+      document.getElementById("totalContainer").style.display = "none";
+      document.getElementById("totalCarrito").innerHTML = 0;
+    }
+  }
+};
+
+renderServicios();
 
 const carritoIndex = (productoId) => {
   const contenedorCarrito2 = document.getElementById("carrito-contenedor");
@@ -29,27 +44,29 @@ const carritoIndex = (productoId) => {
       timer: 1800,
     });
   } else {
-    const renderProductosCarrito = () => {
-      let producto = cortes.find((producto) => producto.id == productoId);
-      carritoDeCompras.push(producto);
-      let div = document.createElement("div");
-      div.classList.add("productoEnCarrito");
-      div.innerHTML = ` <p>${producto.nombre}</p>
-                        <p>Precio: ${producto.precio}</p> 
-                        <button id="eliminar(${producto.id})" class="boton-eliminar" ><i class="fa-solid fa-trash-can"></i></button>`;
-      contenedorCarrito2.appendChild(div);
+    let producto = cortes.find((producto) => producto.id == productoId);
+    carritoDeCompras.push(producto);
+    let div = document.createElement("div");
+    div.classList.add("productoEnCarrito");
+    div.innerHTML = ` <p>${producto.nombre}</p>
+                      <p>Precio: ${producto.precio}</p> 
+                      <button onClick="borrarServicio(${producto.id})" class="boton-eliminar" ><i class="fa-solid fa-trash-can"></i></button>`;
+    contenedorCarrito2.appendChild(div);
 
-      /* Para borrar en el carrito. No me funciona!!*/
-      let botonBorrar = document.getElementById(`eliminar(${producto.id})`);
-      botonBorrar.addEventListener("click", () => {
-        borrarServicio(producto.id);
-      });
+    localStorage.setItem("listaServicios2", JSON.stringify(carritoDeCompras));
 
-      const guardarStorage2 = (clave, valor) => {
-        localStorage.setItem(clave, valor);
-      };
-      guardarStorage2("listaServicios2", JSON.stringify(carritoDeCompras));
-    };
+    let total = document.getElementById("totalCarrito").innerHTML;
+    total = Number(total) + Number(producto.precio);
+    console.log({ total2: total });
+    document.getElementById("totalCarrito").innerHTML = total;
+
+    if (total > 0) {
+      document.getElementById("totalContainer").style.display = "block";
+      document.getElementById("totalCarrito").innerHTML = total;
+    } else {
+      document.getElementById("totalContainer").style.display = "none";
+      document.getElementById("totalCarrito").innerHTML = 0;
+    }
 
     Swal.fire({
       position: "top-end",
@@ -58,27 +75,14 @@ const carritoIndex = (productoId) => {
       showConfirmButton: false,
       timer: 1800,
     });
-
-    renderProductosCarrito();
   }
 };
 console.log(carritoDeCompras);
 
-/* Funcion para borrar en el carrito.. no me funciona!!*/
 const borrarServicio = (productoId) => {
   const item = carritoDeCompras.find((producto) => producto.id == productoId);
   const index = carritoDeCompras.indexOf(item);
   carritoDeCompras.splice(index, 1);
+  localStorage.setItem("listaServicios2", JSON.stringify(carritoDeCompras));
+  renderServicios();
 };
-
-/* Hora */
-/* const botonHora = document.getElementById(`botonHora`);
-botonHora.addEventListener("click", () => {
-  const horarios = document.getElementById("horarios");
-  const div = document.createElement("div");
-  div.innerHTML += `<div>
-                        <h4>''</h4>
-                    </div>`;
-
-  horarios.appendChild(div);
-}); */

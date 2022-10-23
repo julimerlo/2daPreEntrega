@@ -60,3 +60,9 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
+.total-Cointainer {
+  text-align: center;
+  padding: 15px;
+  display: none;
+}
